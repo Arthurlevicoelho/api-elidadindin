@@ -1,0 +1,16 @@
+version: 3.7
+
+services:
+  postgres:
+    image: docker.io/library/postgres:14-alpine
+    container_name: bruna
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./volumes/database:/var/lib/postgresql/data:Z
+    environment:
+      - POSTGRES_USER=adm
+      - POSTGRES_PASSWORD=01234567
+      - POSTGRES_DB=app
+      - TZ=America/Fortaleza

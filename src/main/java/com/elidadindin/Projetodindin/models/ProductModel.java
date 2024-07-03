@@ -1,0 +1,35 @@
+package com.elidadindin.Projetodindin.models;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Lob;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.*;
+import org.hibernate.validator.constraints.Length;
+
+@Data
+@Entity
+@EqualsAndHashCode(callSuper=false)
+@Table(schema = "talk")
+public class ProductModel extends BaseModel{
+
+    @Size(min = 3, max = 30, message = "{validation.name.size}")
+    @NotBlank
+    @Column(unique = true)
+    private String flavor;
+
+    @Column(name = "available_quantity")
+    private Integer availableQuantity;
+
+    @NotNull
+    private Double price;
+
+    @Column(columnDefinition = "BYTEA")
+    private byte[] image;
+
+    @Size(min = 3, max = 100, message = "{validation.required.size}")
+    private String description;
+}
