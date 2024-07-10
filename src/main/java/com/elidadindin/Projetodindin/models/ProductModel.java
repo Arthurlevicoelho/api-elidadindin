@@ -1,9 +1,6 @@
 package com.elidadindin.Projetodindin.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Lob;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -13,12 +10,12 @@ import org.hibernate.validator.constraints.Length;
 @Data
 @Entity
 @EqualsAndHashCode(callSuper=false)
-@Table(schema = "talk")
+@Table(schema = "talk", name = "product")
 public class ProductModel extends BaseModel{
 
     @Size(min = 3, max = 30, message = "{validation.name.size}")
     @NotBlank
-    @Column(unique = true)
+    @Column(name = "flavor", unique = true)
     private String flavor;
 
     @Column(name = "available_quantity")

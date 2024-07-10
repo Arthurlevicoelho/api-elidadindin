@@ -12,8 +12,8 @@ import java.util.Set;
 @Data
 @Entity
 @EqualsAndHashCode(callSuper=false)
-@Table(schema = "talk", name = "user_address")
-public class UserAddressModel extends BaseModel{
+@Table(schema = "talk", name = "address")
+public class AddressModel extends BaseModel{
 
     @Column(name = "street")
     private String street;
@@ -21,9 +21,6 @@ public class UserAddressModel extends BaseModel{
     @Column(name = "city")
     private String city;
 
-    @Column(name = "state")
-    private String state;
-
-    @ManyToMany(mappedBy = "address")
-    private Set<UserModel> users;
+    @Column(name = "number")
+    private String number;
 }
