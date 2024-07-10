@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS talk.product_model (
+CREATE TABLE IF NOT EXISTS "talk"."product" (
     id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
     flavor varchar(30) unique not null,
     image BYTEA,
