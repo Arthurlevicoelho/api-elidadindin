@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Component
@@ -66,5 +68,20 @@ public class UserService extends BaseService<UserModel, UUID> {
 
 
         return ResponseEntity.badRequest().body(new ResponseModel(null, "Endereço inválido"));
+    }
+
+    public ResponseEntity<ResponseModel> getAllAddressByUserId(UUID userId) {
+
+        List<UserAddressModel> userAddressModels = userAddressRepository.findByUserId(userId);
+        List<AddressModel> listAddress = new ArrayList<AddressModel>();
+        if(userAddressModels != null){
+            for(UserAddressModel model : userAddressModels){
+                listAddress.add(model.getAddressModel());
+            }
+            return ResponseEntity.ok().body(new ResponseModel(listAddress, ""));
+        }
+
+        return ResponseEntity.ok().body(new ResponseModel(null, "Error"));
+
     }
 }
